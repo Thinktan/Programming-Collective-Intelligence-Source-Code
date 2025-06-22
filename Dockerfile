@@ -1,11 +1,13 @@
 FROM python:2.7
 
-# 设置工作目录（与本地挂载目录一致）
+# 与 PyCharm 挂载点保持一致，避免路径错乱
 WORKDIR /app
 
-# 可选：复制 requirements.txt 并安装依赖
+# 只复制 pip 依赖文件
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-# 默认命令（PyCharm 会覆盖这个）
+# 可选：复制代码（非必要，PyCharm会挂载）
+# COPY . .
+
 CMD ["python"]
