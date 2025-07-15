@@ -37,7 +37,7 @@ class crawler:
   # Index an individual page
   def addtoindex(self,url,soup):
     if self.isindexed(url): return
-    print 'Indexing '+url
+    print('Indexing '+url)
   
     # Get the individual words
     text=self.gettextonly(soup)
@@ -101,7 +101,7 @@ class crawler:
         try:
           c=urllib2.urlopen(page)
         except:
-          print "Could not open %s" % page
+          print("Could not open %s" % page)
           continue
         try:
           soup=BeautifulSoup(c.read())
@@ -120,7 +120,7 @@ class crawler:
   
           self.dbcommit()
         except:
-          print "Could not parse page %s" % page
+          print("Could not parse page %s" % page)
 
       pages=newpages
 
@@ -150,7 +150,7 @@ class crawler:
     self.dbcommit()
     
     for i in range(iterations):
-      print "Iteration %d" % (i)
+      print("Iteration %d" % (i))
       for (urlid,) in self.con.execute('select rowid from urllist'):
         pr=0.15
         
@@ -205,7 +205,7 @@ class searcher:
 
     # Create the query from the separate parts
     fullquery='select %s from %s where %s' % (fieldlist,tablelist,clauselist)
-    print fullquery
+    print(fullquery)
     cur=self.con.execute(fullquery)
     rows=[row for row in cur]
 
@@ -237,7 +237,7 @@ class searcher:
     rankedscores.sort()
     rankedscores.reverse()
     for (score,urlid) in rankedscores[0:10]:
-      print '%f\t%s' % (score,self.geturlname(urlid))
+      print('%f\t%s' % (score,self.geturlname(urlid)))
     return wordids,[r[1] for r in rankedscores[0:10]]
 
   def normalizescores(self,scores,smallIsBetter=0):
