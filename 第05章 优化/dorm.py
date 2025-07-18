@@ -34,7 +34,7 @@ def printsolution(vec):
         # Choose the slot from the remaining ones
         dorm = dorms[slots[x]]
         # Show the student and assigned dorm
-        print(prefs[i][0], dorm)  # Python 3: 使用 print 函数
+        print(prefs[i][0], dorm)
         # Remove this slot
         del slots[x]
 
