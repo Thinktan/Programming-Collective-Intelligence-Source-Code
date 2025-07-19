@@ -12,6 +12,8 @@ people = [('Seymour', 'BOS'),
 destination = 'LGA'
 flights = {}
 
+domain = [(0,9)]*(len(people)*2)
+
 # 打开文件：用 open 替代 Python2 的 file 函数
 with open('schedule.txt') as f:  # Python 3 中没有 file() 函数了
     for line in f:
